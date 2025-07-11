@@ -7,7 +7,7 @@ This Streamlit-based application allows you to **generate an advanced quiz from 
 ## 🚀 Features
 
 - ✅ Fetches transcript of a YouTube video (in Hindi or English)
-- ✂️ Splits the transcript into logical **chunks** (max 2500 characters)
+- ✂️ Splits the transcript into logical **chunks** (max 2500 characters) to work better with LLMs and avoid token overflow.
 - 📚 Generates **20 MCQs** using LLM (LLama3 via Groq)
 - 🧠 Generates **5 high-level summary questions** with model answers
 - 🔁 Ensures **no duplicate questions** and **clean formatting**
@@ -33,7 +33,7 @@ This Streamlit-based application allows you to **generate an advanced quiz from 
 
 1. **Input**: User enters a YouTube video ID (e.g., `dQw4w9WgXcQ`)
 2. **Transcript Retrieval**: The app fetches the transcript using `youtube-transcript-api`, first in Hindi (`hi`), then falls back to English (`en`) if not found.
-3. **Chunking**: The transcript is broken into multiple **chunks (max 2500 characters)** without breaking words.
+3. **Chunking**: The full transcript is split into **text chunks (~2500 characters)** to handle long inputs effectively for LLMs(to work better with LLMs and avoid token overflow).
 4. **MCQ Generation**:
     - Each chunk is passed through a prompt to the **LLama3 model via Groq**
     - 20 **deep, logic-based MCQs** are created with 4 options each
